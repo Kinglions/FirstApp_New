@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
         borderRadius:5,
         borderColor:'#ccc',
         padding:5,
+        
     },
     btn:{
         width:55,

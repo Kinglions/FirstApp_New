@@ -46,7 +46,7 @@ export default class Movies_list extends Component {
     }
 
     static propTypes = {
-        tip:PropTypes.string.isRequired,
+        tip:PropTypes.number.isRequired,
         navigation:PropTypes.object.isRequired,
 
     }
@@ -60,6 +60,12 @@ export default class Movies_list extends Component {
 
         var that = this;
         var url = Service.movie_search + 'count=10&q=' + this.state.keywords + '&start=' + this.state.dataSource.length.toString();
+
+        if(this.props.tip === 1){
+            url = Service.movie_playing + 'count=10&start=' + this.state.dataSource.length.toString();
+        }else if(this.props.tip === 2){
+            url = Service.movie_soon + 'count=10&start=' + this.state.dataSource.length.toString();
+        }
 
         console.log(url)
 
@@ -202,7 +208,7 @@ export default class Movies_list extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 {
-                    this.props.tip === '0' ? <SearchBar
+                    this.props.tip === 0 ? <SearchBar
                             onChangeText={this._onChangeText}
                             placeholder='请输入电影名称'
                             onPress={this._searchPress}

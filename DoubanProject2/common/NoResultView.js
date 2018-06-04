@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingBottom: 50,
         alignItems: 'center',
-        backgroundColor:'red'
+        backgroundColor:'white'
     },
 
     refreshBg: {

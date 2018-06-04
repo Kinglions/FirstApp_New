@@ -42,5 +42,8 @@ export default Douban_APIS = {
     */
     movie_search: BaseURL + 'movie/search?',
 
+    movie_playing: BaseURL + '/movie/in_theaters?',
+
+    movie_soon: BaseURL + '/movie/coming_soon?',
 
 }

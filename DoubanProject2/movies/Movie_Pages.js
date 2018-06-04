@@ -16,6 +16,7 @@ import {
     View,
     SafeAreaView,
     ScrollView,
+    Keyboard,
 
 } from 'react-native';
 import SwitchSelector from 'react-native-switch-selector'
@@ -26,9 +27,9 @@ import Movies_list from "./Movies_list";
 
 
 const options = [
-    {label:'电影',value:'0'},
-    {label:'正在热映',value:'1'},
-    {label:'即将上映',value:'2'},
+    {label:'电影搜索',value:0},
+    {label:'正在热映',value:1},
+    {label:'即将上映',value:2},
 ];
 
 
@@ -56,14 +57,20 @@ export default class Movie_Pages extends Component {
     }
 
     _onPressHeader=(value)=>{
-        alert(value);
+        this.setState({
+            page:value,
+        })
+
+        Keyboard.dismiss();
     }
 
     // 构造
     constructor(props) {
         super(props);
         // 初始状态
-        this.state = {};
+        this.state = {
+            page:0,
+        };
     }
 
     // 配置默认属性
@@ -79,6 +86,10 @@ export default class Movie_Pages extends Component {
         // sex:PropTypes.number.isRequired,
 
     }
+    componentWillUnmount () {
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
+    }
 
 
     // 渲染视图
@@ -88,14 +99,14 @@ export default class Movie_Pages extends Component {
         for (var i in options){
 
             var movie = (
-                <Movies_list tip={options[i].value} navigation={this.props.navigation}/>
+                <Movies_list key={options[i].value} tip={options[i].value} navigation={this.props.navigation}/>
             )
             moviesList.push(movie)
         }
 
         return (
             <SafeAreaView style={{flex: 1}}>
-                <ScrollableTabView style={styles.container} renderTabBar={false}>
+                <ScrollableTabView page={this.state.page} locked={true} style={styles.container} renderTabBar={false}>
                     {moviesList}
                 </ScrollableTabView>
             </SafeAreaView>
