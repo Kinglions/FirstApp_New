@@ -42,8 +42,20 @@ export default Douban_APIS = {
     */
     movie_search: BaseURL + 'movie/search?',
 
-    movie_playing: BaseURL + '/movie/in_theaters?',
+    movie_playing: BaseURL + 'movie/in_theaters?',
 
-    movie_soon: BaseURL + '/movie/coming_soon?',
+    movie_soon: BaseURL + 'movie/coming_soon?',
+
+    /*获取城市列表*/
+    Event_city: BaseURL + 'loc/list',
+
+    /*获取城市列表
+
+    loc	城市 id
+    day_type	时间类型	future, week, weekend, today, tomorrow
+    type	活动类型	all,music, film, drama, commonweal, salon, exhibition, party, sports, travel, others
+
+    */
+    Event_list: BaseURL + 'event/list?',
 
 }

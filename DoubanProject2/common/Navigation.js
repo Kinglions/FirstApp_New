@@ -26,6 +26,8 @@ import PropTypes from 'prop-types'
 import Book_detail from "../books/Book_detail";
 import CustomWebView from "./CustomWebView";
 import Movie_Pages from "../movies/Movie_Pages";
+import Events_home from "../Events/Events_home";
+import Util from "./Util";
 
 
 /*
@@ -70,20 +72,8 @@ export const BookStack = createStackNavigator(
     }
 
 );
-
-
 // 隐藏子页面 tabBar标签栏
-BookStack.navigationOptions = ({navigation}) => {
-
-    let tabBarVisible = true;
-    if (navigation.state.index > 0) {
-        tabBarVisible = false;
-    }
-
-    return {
-        tabBarVisible,
-    }
-}
+BookStack.navigationOptions = Util.navTabSetting
 
 export const MovieStack = createStackNavigator(
 
@@ -96,15 +86,12 @@ export const MovieStack = createStackNavigator(
         }
     }
 );
+MovieStack.navigationOptions = Util.navTabSetting
 
-MovieStack.navigationOptions = ({navigation}) => {
-
-    let tabBarVisible = true;
-    if(navigation.state.index > 0){
-        tabBarVisible = false;
+export const EventStack = createStackNavigator(
+    {
+        Events_home:{screen:Events_home}
     }
-    return {tabBarVisible};
-}
-
-
+);
+EventStack.navigationOptions = Util.navTabSetting
 

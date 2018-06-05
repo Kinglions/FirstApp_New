@@ -62,7 +62,9 @@ export default class Movie_item extends Component {
                 <View style={styles.imageContainer}>
                     <Image
                         style={styles.image}
-                        source={{uri:movie.images.medium}}
+                        source={{
+                            uri:movie.images.medium,
+                        }}
                     />
                 </View>
                 <View style={styles.contentContainer}>

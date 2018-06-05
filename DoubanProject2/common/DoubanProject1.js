@@ -24,7 +24,8 @@ import { createBottomTabNavigator } from 'react-navigation'
 
 import PropTypes from 'prop-types'
 
-import {BookStack, MovieStack} from './Navigation'
+import {BookStack, EventStack, MovieStack} from './Navigation'
+import Events_home from "../Events/Events_home";
 
 StatusBar.setHidden(false);
 
@@ -45,6 +46,12 @@ const TabBarScreen = createBottomTabNavigator({
             tabBarLabel:'电影',
         }
     },
+    Events_home:{
+        screen:EventStack,
+        navigationOptions:{
+            tabBarLabel:'同城活动',
+        }
+    }
 
 },{
     initialRouteName:'Book', // 设置默认路由
